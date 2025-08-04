@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sunnyside Agency</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      color: white;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      transition: all 0.3s ease;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn {
+      background: white;
+      color: black;
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .contact-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      padding: 2rem;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu a {
+      color: hsl(213, 9%, 39%);
+      font-size: 1.2rem;
+    }
+
+    .mobile-menu .contact-btn {
+      background-color: hsl(51, 100%, 49%);
+      color: black;
+    }
+
+    /* Header */
+    .header {
+      height: 90vh;
+      background: url('image-header.jpg') center/cover no-repeat;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-align: center;
+    }
+
+    .header-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+    
+    .header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 5px;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+    
+    .header-arrow {
+      width: 24px;
+      margin: 0 auto;
+    }
+
+    /* Rest of your existing styles... */
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .text-block, .image-block {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .text-block h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .text-block p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      font-size: large;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    .text-block a {
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      border-bottom: 2px solid hsl(51, 100%, 49%);
+    }
+    
+    .image-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .service {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      text-align: center;
+      height: 400px;
+      padding: 2rem;
+      min-width: 300px;
+    }
+
+    .graphic {
+      background-image: url('image-graphic-design.jpg');
+    }
+
+    .photo {
+      background-image: url('image-photography.jpg');
+    }
+
+    .service h3 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .service p {
+      max-width: 80%;
+      margin: 1rem auto;
+      font-size: 0.95rem;
+    }
+
+    .testimonials {
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .testimonials h4 {
+      letter-spacing: 4px;
+      color: gray;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .testimonial {
+      max-width: 300px;
+    }
+
+    .testimonial img {
+      width: 50px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .gallery img {
+      width: 25%;
+      height: auto;
+    }
+
+    footer {
+      background-color: hsl(168, 34%, 60%);
+      padding: 3rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      color: hsl(168, 34%, 20%);
+    }
+
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1rem 0;
+    }
+
+    .socials {
+      margin-top: 1rem;
+    }
+
+    .socials a {
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* Toggle Class for Hamburger */
+    .toggle .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .toggle .line2 {
+      opacity: 0;
+    }
+    .toggle .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Active Class for Mobile Menu */
+    .active {
+      display: flex !important;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .section,
+      .services,
+      .testimonial-list {
+        flex-direction: column;
+      }
+
+      .gallery img {
+        width: 50%;
+      }
+
+      .text-block, .image-block {
+        padding: 1rem;
+      }
+
+      .header-arrow {
+        width: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav>
+      <div class="logo">sunnyside</div>
+      <ul class="nav-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#" class="contact-btn">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+      <div class="mobile-menu">
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Projects</a>
+        <a href="#" class="contact-btn">Contact</a>
+      </div>
+    </nav>
+    <div class="header-content">
+      <h1>WE ARE CREATIVES</h1>
+      <img src="icon-arrow-down.svg" alt="Arrow" class="header-arrow">
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="text-block">
+        <h2>Transform your brand</h2>
+        <p>We are a full-service creative agency specializing in helping brands grow fast. Engage your clients through compelling visuals that do most of the marketing for you.</p>
+        <a href="#">LEARN MORE</a>
+      </div>
+      <div class="image-block">
+        <img src="image-transform.jpg" alt="Transform">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="image-block">
+        <img src="image-stand-out.jpg" alt="Stand Out">
+      </div>
+      <div class="text-block">
+        <h2>Stand out to the right audience</h2>
+        <p>Using a collaborative formula of designers, researchers, photographers, videographers, and copywriters, we'll build and extend your brand in digital places.</p>
+        <a href="#">LEARN MORE</a>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="service graphic">
+        <h3>Graphic Design</h3>
+        <p>Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential clients' attention.</p>
+      </div>
+      <div class="service photo">
+        <h3>Photography</h3>
+        <p>Increase your credibility by getting the most stunning and high quality photos that improve your business image.</p>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h4>CLIENT TESTIMONIALS</h4>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <img src="image-emily.jpg" alt="Emily">
+          <p>We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always hit.</p>
+          <strong>Emily R.</strong><br/>
+          <span>Marketing Director</span>
+        </div>
+        <div class="testimonial">
+          <img src="image-thomas.jpg" alt="Thomas">
+          <p>Sunnyside's enthusiasm coupled with their keen interest in our brand's success made it a satisfying and enjoyable experience.</p>
+          <strong>Thomas S.</strong><br/>
+          <span>Chief Operating Officer</span>
+        </div>
+        <div class="testimonial">
+          <img src="image-jennie.jpg" alt="Jennie">
+          <p>Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!</p>
+          <strong>Jennie F.</strong><br/>
+          <span>Business Owner</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <img src="image-gallery-milkbottles.jpg" alt="Milk Bottles">
+      <img src="image-gallery-orange.jpg" alt="Orange">
+      <img src="image-gallery-cone.jpg" alt="Cone">
+      <img src="image-gallery-sugarcubes.jpg" alt="Sugar Cubes">
+    </section>
+  </main>
+
+  <footer>
+    <h3>sunnyside</h3>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+    <div class="socials">
+      <a href="#"><img src="icon-facebook.svg" alt="Facebook"></a>
+      <a href="#"><img src="icon-twitter.svg" alt="Twitter"></a>
+      <a href="#"><img src="icon-pinterest.svg" alt="Pinterest"></a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('toggle');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('toggle');
+      });
+    });
+  </script>
+</body>
+</html>

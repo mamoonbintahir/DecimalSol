@@ -1,0 +1,19 @@
+hoisting means k variable ya function phle execute ho jayega though it would be formed later.
+
+variable scope:
+agr apke pas global mein 
+constt age=100;
+function go(){
+const age = 200;
+}
+
+ab yahan pe jo local ha wo shadow kr lega global ko like local ki value ayegi function call krne pe .
+but jab ap variable ko console krenge ya call krenge to wo global use hoga.
+
+output:
+go();    //output=200
+console.log(age);    //output=100  (almost java mn b same e hta
+
+-> concept of block (controls scope of variable)
+. constt variables can,t be re assigned but the var and let does
+. == compares values while === compares values as well as data-types

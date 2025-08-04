@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Trial Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI';
+      background-color: #f96d6f;
+      
+      background-image: url('bg-intro-desktop.png');
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      display: flex;
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+      color: white;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .left {
+      flex: 1;
+      min-width: 300px;
+      padding: 10px;
+    }
+
+    .left h1 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .left p {
+      font-size: 1em;
+    }
+
+    .right {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .top-banner {
+      background-color: #4b3fda;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    input.error {
+      border: 2px solid red;
+      background-color: #ffe5e5;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.8em;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #38d9a9;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .terms {
+      font-size: 0.7em;
+      text-align: center;
+      margin-top: 10px;
+      color: gray;
+    }
+
+    .terms span {
+      color: red;
+      font-weight: bold;
+    }
+    input.error {
+      border: 2px solid red;
+      background-color: #ffe5e5;
+    }
+    
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 20px 10px;
+      }
+
+      .left, .right {
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .left h1 {
+        font-size: 1.5em;
+      }
+
+      .right {
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-banner {
+        font-size: 0.9em;
+      }
+
+      input, button {
+        font-size: 0.95em;
+        padding: 10px;
+      }
+
+      .left h1 {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>Learn to code by watching others</h1>
+      <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+    </div>
+
+    <div class="right">
+      <div class="top-banner">Try it free 7 days </div>
+      <form id="trialForm">
+        <input type="text" id="fname" placeholder="first name">
+        <div id="fnameError" class="error-message"></div>
+
+        <input type="text" id="lname" placeholder="last name">
+        <div id="lnameError" class="error-message"></div>
+
+        <input type="email" id="email" placeholder="abc@gmail.com">
+        <div id="emailError" class="error-message"></div>
+
+        <input type="password" id="password" placeholder="password">
+        <div id="passwordError" class="error-message"></div>
+
+        <button submit="saveSignup()">Sign Up</button>
+        <div class="terms">
+          By clicking the button, you are agreeing to our <span>Terms and Services</span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById("trialForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+  
+      var fname = document.getElementById("fname");
+      var lname = document.getElementById("lname");
+      var email = document.getElementById("email");
+      var password = document.getElementById("password");
+      var fnameError = document.getElementById("fnameError");
+      var lnameError = document.getElementById("lnameError");
+      var emailError = document.getElementById("emailError");
+      var passwordError = document.getElementById("passwordError");
+  
+      var valid = true;
+  
+      if (fname.value.trim() === "") {
+        fname.classList.add("error");
+        fnameError.textContent = " Please enter your first name";
+        valid = false;
+      }
+      //again from youtube (.classList k methods and their usage)
+       else {
+        fnameError.textContent = "";
+      }
+  
+      if (lname.value.trim() === "") {
+        lname.classList.add("error");
+        lnameError.textContent = " Please enter your Last Name";
+        valid = false;
+      } 
+      else {
+        lnameError.textContent = "";
+      }
+  
+      if (email.value.trim() === "" || !email.value.includes("@") || !email.value.includes(".")) {
+        email.classList.add("error");
+        emailError.textContent = " please enter a valid email";
+        valid = false;
+      } 
+      else {
+        emailError.textContent = "";
+      }
+  
+      if (password.value.trim() === "") {
+        password.classList.add("error");
+        passwordError.textContent = "Please enter a Password";
+        valid = false;
+      } 
+      else {
+        passwordError.textContent = "";
+      }
+      
+      function saveSignup() {
+        let fname = document.getElementById("fname").value;
+        let lname = document.getElementById("lname").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+      
+        let userInfo = [fname, lname, email, password];
+      
+        let stored = localStorage.getItem("sudo");
+        let users = [];
+      
+        if (stored) {
+          users = stored.split("  |  ");
+        }
+      
+        users.push(userInfo.join(","));
+        localStorage.setItem("sudo", users.join("  |  "));
+      }
+      
+      
+     
+        if (valid) {
+          saveSignup();
+          window.location.href = "signin.html";
+        }
+
+
+      });
+  </script>
+  
+
+</body>
+</html>
