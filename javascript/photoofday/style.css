@@ -1,0 +1,49 @@
+body {
+    background: url("photoofphoto.png") no-repeat center center fixed;
+    background-size:center;
+    color: #7ba9ca;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  .container {
+    background: rgba(87, 115, 138, 0.6); 
+
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  input[type="date"],
+  button {
+    padding: 10px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  button {
+    background-color: #2c6597;
+    color: white;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #11345b;
+  }
+  
+  img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
